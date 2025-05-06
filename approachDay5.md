@@ -126,12 +126,15 @@ This is a brute-force approach. A more optimal solution would be binary search f
 
 ```mermaid
 flowchart TD
-    A[Start] --> B[Loop i = num to 1]
-    B --> C{Is i*i == num?}
-    C -->|Yes| D[Return true]
-    C -->|No| E[Decrement i]
-    E --> B
-    B -->|Loop Ends| F[Return false]
+    A([Start]) --> B["Initialize i = (long)num"]
+    B --> C{"i > 0?"}
+    C -- Yes --> D{"i * i == num"}
+    D -- Yes --> E["Return true"]
+    D -- No --> F["i-- (decrement)"]
+    F --> C
+    C -- No --> G["Return false"]
+    E --> H([End])
+    G --> H
 ```
 
 ---
