@@ -136,15 +136,5 @@ flowchart TD
 
 ---
 
-## 🧠 Optimization Tips
 
-| Problem | Optimization |
-|--------|---------------|
-| Palindrome Linked List | Reverse second half in-place for O(1) space |
-| Valid Perfect Square | Use binary search for O(log n) time |
 
----
-
-## 📚 Conclusion
-
-Both solutions are straightforward and easy to understand. However, for production or competitive programming, optimized versions are recommended for better performance.
