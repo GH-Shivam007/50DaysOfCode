@@ -58,15 +58,20 @@ This is a simple solution leveraging extra space. A more space-efficient solutio
 
 ```mermaid
 flowchart TD
-    A[Start] --> B[Traverse the Linked List]
-    B --> C[Store each node value in vector]
-    C --> D[Initialize two pointers: left=0, right=n-1]
-    D --> E{left < right}
-    E -->|Yes| F{listVals[left] == listVals[right]}
-    F -->|Yes| G[Increment left, Decrement right]
-    G --> E
-    F -->|No| H[Return false]
-    E -->|No| I[Return true]
+    A([Start]) --> B["Initialize listVals as empty vector"]
+    B --> C{"Is head not null?"}
+    C -- Yes --> D["Add head->val to listVals"]
+    D --> E["Move head to head->next"]
+    E --> C
+    C -- No --> F["Set left=0, right=listVals.size()-1"]
+    F --> G{"left < right and values equal?"}
+    G -- Yes --> H["left++, right--"]
+    H --> G
+    G -- No --> I{"Left >= right?"}
+    I -- Yes --> J["Return true"]
+    I -- No --> K["Return false"]
+    J --> L([End])
+    K --> L
 ```
 
 ---
