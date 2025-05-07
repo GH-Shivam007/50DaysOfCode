@@ -57,13 +57,11 @@ public:
 
 ```mermaid
 flowchart TD
-    A[Start with n] --> B{Is n 1 or 7?}
-    B -- Yes --> G[Return true]
-    B -- No --> C{Is n < 10?}
-    C -- Yes --> H[Return false]
-    C -- No --> D[Sum = 0]
-    D --> E[Extract digits, square & add to sum]
-    E --> F[Call isHappy(sum)]
+    A[Start] --> B{n == 1 or 7?}
+    B -- Yes --> C[Return True]
+    B -- No --> D{n < 10?}
+    D -- Yes --> E[Return False]
+    D -- No --> F[Compute sum of squares of digits]
     F --> B
 ```
 
@@ -115,13 +113,13 @@ public:
 
 ```mermaid
 flowchart TD
-    A[Create dummy node -> temp] --> B[Set temp->next = head]
+    A[Start] --> B[Create dummy node temp]
     B --> C[Set curr = temp]
     C --> D{curr->next != NULL?}
     D -- Yes --> E{curr->next->val == val?}
-    E -- Yes --> F[curr->next = curr->next->next]
-    E -- No --> G[curr = curr->next]
+    E -- Yes --> F[Set curr->next = curr->next->next]
     F --> D
+    E -- No --> G[Set curr = curr->next]
     G --> D
     D -- No --> H[Return temp->next]
 ```
