@@ -1,0 +1,37 @@
+Happy Number
+
+
+class Solution {
+public:
+    bool isHappy(int n) {
+        if(n==1 || n==7) return true;
+        else if(n<10) return false;
+        else{
+            int sum=0;
+            while(n>0){
+                int temp=n%10;
+                sum+= temp*temp;
+                n=n/10;
+            }
+            return isHappy(sum);
+        }
+    }
+};
+
+
+
+Remove Linked List Elements
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode *temp = new ListNode(0);
+        temp->next = head;
+        ListNode *curr = temp;
+        while(curr->next != NULL ){
+            if(curr->next->val == val) curr->next = curr->next->next;
+            else curr = curr->next;
+        }
+        return temp->next;
+    }
+};
