@@ -60,15 +60,23 @@ public:
 
 ```mermaid
 flowchart TD
-    A[Check if head is null] --> B[Count length of list]
-    B --> C[k = k % length]
-    C --> D{Is k == 0?}
-    D -- Yes --> E[Return head]
-    D -- No --> F[Traverse to (length-k-1)th node]
-    F --> G[Set new head = cur->next]
-    G --> H[cur->next = NULL]
-    H --> I[tail->next = head]
-    I --> J[Return new head]
+    A[Start] --> B{Is head null?}
+    B -- Yes --> C[Return head]
+    B -- No --> D[Initialize: length=1, tail=head, cur=head]
+    D --> E{tail->next exists?}
+    E -- Yes --> F[Move tail to tail->next, length++]
+    F --> E
+    E -- No --> G[Compute k = k % length]
+    G --> H{k == 0?}
+    H -- Yes --> I[Return original head]
+    H -- No --> J[Initialize i=0]
+    J --> K{i < length - k - 1?}
+    K -- Yes --> L[Move cur to cur->next, i++]
+    L --> K
+    K -- No --> M[Set newh = cur->next]
+    M --> N[Break link: cur->next = null]
+    N --> O[Connect tail->next = head]
+    O --> P[Return newh]
 ```
 
 ---
