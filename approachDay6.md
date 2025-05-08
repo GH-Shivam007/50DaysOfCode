@@ -1,4 +1,3 @@
-Here's a README file based on your format, covering both **Happy Number** and **Remove Linked List Elements** problems:
 
 ---
 
