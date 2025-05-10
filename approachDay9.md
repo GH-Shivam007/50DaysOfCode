@@ -29,6 +29,7 @@ public:
         return numStr[(n - 1) % digitInNum] - '0';
     }
 };
+```
 
 ###📈 Time & Space Complexity
 Time Complexity: O(log(n)), where n is the input number. The loop iterates to determine the range and number containing the nth digit, with the number of iterations growing logarithmically.
@@ -40,8 +41,7 @@ This approach avoids generating the entire sequence and directly calculates the 
 
 🔁 Flowchart (Mermaid)
 mermaid
-Copy
-Edit
+```
 graph LR
     A[Start] --> B[Initialize variables]
     B --> C{n > digitInNum * end}
@@ -50,6 +50,8 @@ graph LR
     E --> F[Convert number to string]
     F --> G[Return nth digit]
     G --> H[End]
+```
+    
 🚀 Problem 2: Swapping Nodes in a Linked List
 🔍 Problem Statement
 Given the head of a singly linked list, swap the kth node from the beginning and the kth node from the end of the list. Return the modified list.
@@ -64,9 +66,7 @@ Perform the swap: Swap the values of the identified nodes.
 Return the modified list: Return the modified linked list.
 
 🧾 Code
-cpp
-Copy
-Edit
+```
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
@@ -84,6 +84,8 @@ public:
         return head;
     }
 };
+```
+
 📈 Time & Space Complexity
 Time Complexity: O(n), where n is the number of nodes in the linked list. We traverse the entire list to store the nodes in an array and perform the swap.
 
@@ -92,18 +94,18 @@ Space Complexity: O(n), due to storing the nodes in a vector.
 🧠 Insight
 This approach simplifies the swapping process by using extra space to store the nodes, making it easier to access the nodes to be swapped.
 
+
+
 🔁 Flowchart (Mermaid)
+```
 mermaid
-Copy
-Edit
 graph LR
     A[Start] --> B[Traverse list and store nodes in array]
     B --> C[Identify kth node from start and end]
     C --> D[Swap values of identified nodes]
     D --> E[Return modified linked list]
     E --> F[End]
-Copy
-Edit
+```
 
 
 
