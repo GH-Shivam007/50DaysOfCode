@@ -1,14 +1,14 @@
-# 💡 C++ Code Explanation with Diagrams
+# C++ Code Explanation with Diagrams
 
 ## 🚀 Problem 1: Nth Digit
 ### 🔍 Problem Statement
-Given an integer `n`, return the nth digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ... (1-based indexing).
+Given a number `n`, return the nth digit of the sequence of numbers starting from 1 (1, 2, 3, 4, ..., 11, 12, 13, ...). For example, the 3rd digit is '3' and the 11th digit is '0' (from 10).
 
 ### ✅ Approach
-- Start with a variable `digitInNum` initialized to 1, and variables `start` and `end` initialized to 1 and 9, respectively.
-- Check if the number `n` is greater than `digitInNum * end`. If so, adjust `n` and update the values for `digitInNum`, `start`, and `end`.
-- Calculate the number that contains the nth digit and convert it to a string.
-- Return the digit from the string representation of the number.
+1. **Initialize variables**: Start by defining variables to track the length of the digits (`digitInNum`), the starting number (`start`), and the range of numbers in each digit length (`end`).
+2. **Locate the range containing the nth digit**: While `n` is larger than the total number of digits in the current range (`digitInNum * end`), subtract that value from `n` and adjust the ranges.
+3. **Determine the exact number**: After narrowing down to the right range, calculate the exact number that contains the nth digit.
+4. **Extract and return the digit**: Convert the number to a string and return the appropriate digit.
 
 ### 🧾 Code
 ```cpp
@@ -29,35 +29,39 @@ public:
         return numStr[(n - 1) % digitInNum] - '0';
     }
 };
-📈 Time & Space Complexity
-Time Complexity: O(log n), where n is the value of the input integer.
 
-Space Complexity: O(1) (constant space as no additional space is used except for variables).
+###📈 Time & Space Complexity
+Time Complexity: O(log(n)), where n is the input number. The loop iterates to determine the range and number containing the nth digit, with the number of iterations growing logarithmically.
+
+Space Complexity: O(1), since no additional space is used except for a few variables.
 
 🧠 Insight
-This approach cleverly breaks down the problem into segments based on the number of digits in each group (1-digit numbers, 2-digit numbers, etc.). The nth digit is then determined by identifying which number contains it.
+This approach avoids generating the entire sequence and directly calculates the nth digit using number properties. It efficiently reduces the search space by increasing the digit length in powers of 10.
 
 🔁 Flowchart (Mermaid)
 mermaid
 Copy
 Edit
-graph TD;
-    A[Start] --> B{Is n > digitInNum * end?};
-    B -->|Yes| C[Update n, digitInNum, start, end];
-    C --> B;
-    B -->|No| D[Calculate the number containing nth digit];
-    D --> E[Convert to string and return nth digit];
-    E --> F[End];
+graph LR
+    A[Start] --> B[Initialize variables]
+    B --> C{n > digitInNum * end}
+    C -->|Yes| D[Update n, digitInNum, start, and end]
+    C -->|No| E[Find the number containing nth digit]
+    E --> F[Convert number to string]
+    F --> G[Return nth digit]
+    G --> H[End]
 🚀 Problem 2: Swapping Nodes in a Linked List
 🔍 Problem Statement
-Given the head of a singly linked list and an integer k, swap the k-th node from the beginning with the k-th node from the end.
+Given the head of a singly linked list, swap the kth node from the beginning and the kth node from the end of the list. Return the modified list.
 
 ✅ Approach
-Traverse the linked list and store the nodes in a vector.
+Store nodes in an array: Traverse the linked list and store each node in an array.
 
-Swap the values of the k-th node from the beginning and the k-th node from the end.
+Identify the nodes to swap: Using the array, identify the kth node from the beginning and end.
 
-Return the head of the modified list.
+Perform the swap: Swap the values of the identified nodes.
+
+Return the modified list: Return the modified linked list.
 
 🧾 Code
 cpp
@@ -81,19 +85,29 @@ public:
     }
 };
 📈 Time & Space Complexity
-Time Complexity: O(n), where n is the length of the linked list. We traverse the entire list to store nodes.
+Time Complexity: O(n), where n is the number of nodes in the linked list. We traverse the entire list to store the nodes in an array and perform the swap.
 
-Space Complexity: O(n), due to the storage of all nodes in the vector.
+Space Complexity: O(n), due to storing the nodes in a vector.
 
 🧠 Insight
-The approach uses a vector to store the nodes, which simplifies accessing the k-th nodes. However, this can be space-inefficient for large linked lists. An optimized approach would avoid extra space.
+This approach simplifies the swapping process by using extra space to store the nodes, making it easier to access the nodes to be swapped.
 
 🔁 Flowchart (Mermaid)
 mermaid
 Copy
 Edit
-graph TD;
-    A[Start] --> B[Traverse linked list and store nodes];
-    B --> C[Swap k-th node from start with k-th node from end];
-    C --> D[Return modified head];
-    D --> F[End];
+graph LR
+    A[Start] --> B[Traverse list and store nodes in array]
+    B --> C[Identify kth node from start and end]
+    C --> D[Swap values of identified nodes]
+    D --> E[Return modified linked list]
+    E --> F[End]
+Copy
+Edit
+
+
+
+
+
+
+
