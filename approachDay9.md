@@ -1,24 +1,17 @@
+# 💡 C++ Code Explanation with Diagrams
 
-💡 C++ Code Explanation with Diagrams
-🚀 Problem 1: Nth Digit
-🔍 Problem Statement
-You are given an integer n. Return the n-th digit of the infinite integer sequence: 1234567891011121314...
+## 🚀 Problem 1: Nth Digit
+### 🔍 Problem Statement
+Given an integer `n`, return the nth digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ... (1-based indexing).
 
-✅ Approach
+### ✅ Approach
+- Start with a variable `digitInNum` initialized to 1, and variables `start` and `end` initialized to 1 and 9, respectively.
+- Check if the number `n` is greater than `digitInNum * end`. If so, adjust `n` and update the values for `digitInNum`, `start`, and `end`.
+- Calculate the number that contains the nth digit and convert it to a string.
+- Return the digit from the string representation of the number.
 
-Start by identifying the length of the digit group the n-th digit belongs to.
-
-Use a loop to subtract the count of digits in 1-digit, 2-digit, 3-digit numbers, etc., from n until we find the correct group.
-
-Calculate the actual number in which the digit lies.
-
-Convert that number to a string and fetch the required digit.
-
-🧾 Code
-
-cpp
-Copy
-Edit
+### 🧾 Code
+```cpp
 class Solution {
 public:
     int findNthDigit(int n) {
@@ -37,40 +30,36 @@ public:
     }
 };
 📈 Time & Space Complexity
-Time Complexity: O(log₁₀n)
-Space Complexity: O(log₁₀n) (due to number-to-string conversion)
+Time Complexity: O(log n), where n is the value of the input integer.
+
+Space Complexity: O(1) (constant space as no additional space is used except for variables).
 
 🧠 Insight
-This approach calculates the digit without generating the entire sequence. It’s a smart trick of skipping large chunks and narrowing down.
+This approach cleverly breaks down the problem into segments based on the number of digits in each group (1-digit numbers, 2-digit numbers, etc.). The nth digit is then determined by identifying which number contains it.
 
 🔁 Flowchart (Mermaid)
-
 mermaid
 Copy
 Edit
-flowchart TD
-    A[Start with n] --> B{n > digits in current group?}
-    B -- Yes --> C[Subtract digits, increase digit length]
-    C --> B
-    B -- No --> D[Find number = start + (n-1)/digitLength]
-    D --> E[Convert number to string]
-    E --> F[Return (n-1) % digitLength char as int]
+graph TD;
+    A[Start] --> B{Is n > digitInNum * end?};
+    B -->|Yes| C[Update n, digitInNum, start, end];
+    C --> B;
+    B -->|No| D[Calculate the number containing nth digit];
+    D --> E[Convert to string and return nth digit];
+    E --> F[End];
 🚀 Problem 2: Swapping Nodes in a Linked List
 🔍 Problem Statement
-You are given the head of a linked list and an integer k. Swap the values of the k-th node from the beginning and the k-th node from the end.
+Given the head of a singly linked list and an integer k, swap the k-th node from the beginning with the k-th node from the end.
 
 ✅ Approach
+Traverse the linked list and store the nodes in a vector.
 
-Traverse the list and store node pointers in a vector.
+Swap the values of the k-th node from the beginning and the k-th node from the end.
 
-Access the k-th node and (n-k+1)-th node from the vector.
-
-Swap their values.
-
-Return the head.
+Return the head of the modified list.
 
 🧾 Code
-
 cpp
 Copy
 Edit
@@ -92,19 +81,19 @@ public:
     }
 };
 📈 Time & Space Complexity
-Time Complexity: O(n)
-Space Complexity: O(n) (due to the extra vector for storing nodes)
+Time Complexity: O(n), where n is the length of the linked list. We traverse the entire list to store nodes.
+
+Space Complexity: O(n), due to the storage of all nodes in the vector.
 
 🧠 Insight
-While this approach is simple and easy to implement, a more optimized solution can achieve the same in O(1) space using two pointers.
+The approach uses a vector to store the nodes, which simplifies accessing the k-th nodes. However, this can be space-inefficient for large linked lists. An optimized approach would avoid extra space.
 
 🔁 Flowchart (Mermaid)
-
 mermaid
 Copy
 Edit
-flowchart TD
-    A[Start] --> B[Traverse and store all nodes in vector]
-    B --> C[Identify k-th and (n-k+1)-th nodes]
-    C --> D[Swap their values]
-    D --> E[Return modified head]
+graph TD;
+    A[Start] --> B[Traverse linked list and store nodes];
+    B --> C[Swap k-th node from start with k-th node from end];
+    C --> D[Return modified head];
+    D --> F[End];
