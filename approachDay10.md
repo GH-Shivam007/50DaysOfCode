@@ -54,8 +54,8 @@ This is a math-based trick question. You don't need to simulate the toggling pro
 ```mermaid
 flowchart TD
     A[Start] --> B[Input number of bulbs n]
-    B --> C[Count number of perfect squares ≤ n]
-    C --> D[Return floor(sqrt(n))]
+    B --> C[Count perfect squares ≤ n]
+    C --> D[Return floorsqrtn]
     D --> E[End]
 
 ```
