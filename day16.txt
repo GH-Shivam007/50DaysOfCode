@@ -1,0 +1,35 @@
+Sum of Square Numbers
+
+
+  class Solution {
+public:
+    bool judgeSquareSum(int c) {
+        if(c==0||c==1) return true;
+        int i =0;
+        int j = sqrt(c);
+        while(i<=j){
+            long sum  = pow(i,2)+pow(j,2);
+            if(sum == c) return true;
+            if(sum>c) j--;
+            else i++;
+        }
+        return false;    
+    }
+};
+
+
+
+
+
+Delete Node in a Linked List
+
+  class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        node->val = node->next->val;
+        node->next = node->next->next;
+        
+    }
+};
+
+  
